@@ -25,7 +25,7 @@ public class hangmanController
      */
     public void logic()
     {
-        theModel.setWord();
+        theModel.setWord("./hangman/words.txt");
         theView.initializeHashMap(theModel.getWord());
         boolean playing = true;
         String guess = "";

@@ -7,29 +7,56 @@ Tully Eva
 07/06/2021
 */
 import java.util.Random;
+import java.util.Scanner;
+import java.io.*;
 public class hangmanModel
 {
-    private String[] possibleWords = new String[]{"hhhhhhhhhh", "hhhhhhhhhh"};
     private String knownLetters = "";
     private String theWord;
     private int lives = 6;
-    
-
     /**
      * Randomize and set the word
      * set the lenght of known letters to the lenght of the word
      */
-    public void setWord()
+    public void setWord(String file)
     {
-        Random rand = new Random();
-        int randInt = rand.nextInt(possibleWords.length);
-        this.theWord = this.possibleWords[randInt];
+        try
+        {
+            Scanner length = new Scanner(new File(file));
+            int numWords = 0;
+            while (length.hasNextLine())
+            {
+                numWords += 1;
+                length.nextLine();
+                //System.out.println(words); 
+            }
+            Scanner word = new Scanner(new File(file));
+            Random rand = new Random();
+            int randInt = rand.nextInt(numWords);
+
+            for(int i = 0; i < numWords; i += 1)
+            {
+                if (i == randInt)
+                {
+                    this.theWord = word.nextLine();
+                    System.out.println(this.theWord);
+                    break;
+                }
+                else
+                {
+                    word.nextLine();
+                }
+            }
+            
+        }
+        catch(IOException e)
+        {
+        }
 
         for(int i = 0; i < this.theWord.length(); i += 1)
         {
                 knownLetters = knownLetters + "_";
         }
-        
     }
     /**
      * check if a letter is inside the word

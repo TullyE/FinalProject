@@ -23,8 +23,8 @@ public class MVCGame
       //https://stackoverflow.com/questions/4871051/how-to-get-the-current-working-directory-in-java
       //https://stackoverflow.com/questions/64509691/how-can-i-add-some-sound-to-my-java-jframe
       //Plays audio
-      URL file = new URL("file:///" + System.getProperty("user.dir") + "/Images" + "/Marcos%20H.%20Bolanos%20-%20A%20Simple%20Life.wav");
-      System.out.println("file:///" + System.getProperty("user.dir") + "/Images" + "/Marcos%20H.%20Bolanos%20-%20A%20Simple%20Life.wav");
+      URL file = new URL("file:///" + System.getProperty("user.dir") + "/audio" + "/Marcos%20H.%20Bolanos%20-%20A%20Simple%20Life.wav");
+      System.out.println("file:///" + System.getProperty("user.dir") + "/audio" + "/Marcos%20H.%20Bolanos%20-%20A%20Simple%20Life.wav");
       AudioInputStream ais = AudioSystem.getAudioInputStream(file);
       Clip clip = AudioSystem.getClip();
       clip.open(ais);
