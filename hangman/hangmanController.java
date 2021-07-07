@@ -1,3 +1,5 @@
+package hangman;
+
 /**
 hangmanController
 has the controller code for the hangman

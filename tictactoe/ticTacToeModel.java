@@ -1,3 +1,5 @@
+package tictactoe;
+
 /**
 ticTacToeModel
 Model for Tic Tac Toe

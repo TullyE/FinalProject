@@ -5,6 +5,16 @@ Tully Eva
 07/06/2021
 */
 import javax.sound.sampled.*;
+
+import hangman.hangmanController;
+import hangman.hangmanModel;
+import hangman.hangmanView;
+import mainMenu.mainMenuController;
+import mainMenu.mainMenuView;
+import tictactoe.ticTacToeController;
+import tictactoe.ticTacToeModel;
+import tictactoe.ticTacToeView;
+
 import java.net.URL;
 public class MVCGame 
 {

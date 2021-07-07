@@ -1,3 +1,5 @@
+package tictactoe;
+
 /**
 ticTacToeView
 has the graphics code for the TicTacToe

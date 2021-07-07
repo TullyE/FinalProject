@@ -1,3 +1,5 @@
+package hangman;
+
 /**
 hangmanView
 has the graphics code for the Hangman

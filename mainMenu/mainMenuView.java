@@ -1,3 +1,5 @@
+package mainMenu;
+
 /**
 mainMenuView
 View for the Main menu

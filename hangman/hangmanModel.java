@@ -1,3 +1,5 @@
+package hangman;
+
 /**
 hangmanModel
 has the Model code for the hangmanModel

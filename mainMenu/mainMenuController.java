@@ -1,3 +1,5 @@
+package mainMenu;
+
 /**
 mainMenuController
 Controller for the Main Menu
