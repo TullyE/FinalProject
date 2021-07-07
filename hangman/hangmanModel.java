@@ -9,7 +9,7 @@ Tully Eva
 import java.util.Random;
 public class hangmanModel
 {
-    private String[] possibleWords = new String[]{"cupcake", "flower", "sleepy", "tiger", "candy", "corn", "code", "pine", "cone", "pirate", "cookies", "trees", "tulips"};
+    private String[] possibleWords = new String[]{"hhhhhhhhhh", "hhhhhhhhhh"};
     private String knownLetters = "";
     private String theWord;
     private int lives = 6;
