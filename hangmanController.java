@@ -1,13 +1,26 @@
+/**
+hangmanController
+has the controller code for the hangman
+Tully Eva
+07/07/2021
+*/
 public class hangmanController
 {
     private hangmanModel theModel;
     private hangmanView theView;
-
+    /**
+     *allow the contorller to use the view/model
+     * @param _theView
+     * @param _theModel
+     */
     public hangmanController(hangmanView _theView, hangmanModel _theModel)
     {
         theModel = _theModel;
         theView = _theView;
     }
+    /**
+     * hangman game logic
+     */
     public void logic()
     {
         theModel.setWord();

@@ -4,7 +4,6 @@ Controller for the Main Menu
 Tully Eva
 07/06/2021
 */
-
 public class mainMenuController
 {
   //private variable

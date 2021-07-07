@@ -1,10 +1,15 @@
+/**
+hangmanView
+has the graphics code for the Hangman
+Tully Eva
+07/07/2021
+*/
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
 import javax.swing.JFrame;
 import java.awt.event.*; 
 import java.util.HashMap;
-
 public class hangmanView extends JPanel implements KeyListener, MouseListener
 {
     private JFrame myFrame;
@@ -20,7 +25,9 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
     private boolean win = false;
     private int livesV;
     
-
+    /**
+     * initialize the JFrame
+     */
     public hangmanView()
     {
         myFrame = new JFrame("Hangman");
@@ -35,10 +42,9 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
         myFrame.addKeyListener(this);
         myFrame.addMouseListener(this);
     }
-   // ***********************************************************************
-   // Methods that must be declared for keyboard input to work
-   // These methods are triggered whenever a key event is detected on the Canvas
-   
+   /**
+    * 
+    */
    public void keyPressed(KeyEvent e)
    {
       // *****************************************************
@@ -55,12 +61,16 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
       }
       // *****************************************************
    }
-   
+   /**
+    * 
+    */
    public void keyReleased(KeyEvent e)
    {
    
    }
-   
+   /**
+    * 
+    */
    public void keyTyped(KeyEvent e)
    {
    
@@ -115,7 +125,12 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
        }
        this.theWord = word;
    }
-
+   /**
+    * detects an update in the mouseX/mouseY and if
+    *those values are within a certain range
+    *returns true
+    * @return if the mouse was clicked or not
+    */
    public boolean submit()
    {
        //System.out.println(this.mouseX);
@@ -132,7 +147,12 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
        mouseY = 0;
        return false;
    }
-
+   /**
+    * Print the known letters to the screen
+    also used to print the word at the end
+    * @param g2
+    * @param known
+    */
    public void showKnown(Graphics2D g2, String known)
    {
         //g2.setFont(new Font("COCOGOOSE", Font.PLAIN, 40));
@@ -145,7 +165,10 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
         }
         g2.drawString(printThis, 34, 468);
    }
-
+   /**
+    * set the background color
+    * @param g2
+    */
    public void createBackgroundColor(Graphics2D g2)
    {
         //g2.setColor(new Color(0, 0, 0));
@@ -154,12 +177,18 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
       g2.draw(background);
       g2.fill(background);
    }
-
+   /**
+    * returns the most recently typed character 
+    *by the user
+    * @return
+    */
    public String getGuess()
    {
        return userGuess;
    }
-
+   /**
+    * set's the guess to an empty string
+    */
    public void resetGuess()
    {
        if (theWord.indexOf(userGuess) == -1)
@@ -169,7 +198,9 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
         
        userGuess = "";
    }
-
+   /**
+    * paint the objects to the JFrame
+    */
    public void paintComponent(Graphics g)
    { 
        //hangmanSubmitGuess.png
@@ -213,28 +244,45 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
         showKnown(g2, knownLettersView);
        }
    }
-
+   /**
+    * get the known letters from the model and then set the known letters view to that string
+    * @param knownLettersModel
+    */
    public void updateKnownLettersView(String knownLettersModel)
    {
        this.knownLettersView = knownLettersModel;
    }
-
+   /**
+    * if the user is out of lives
+    *sets the loss to true
+    * @param n
+    */
    public void setLoss(boolean n)
    {
        this.loss = n;
    }
-
+   /**
+    * if the user guesses the word
+    * sets win to true
+    * @param n
+    */
    public void setWin(boolean n)
    {
        this.win = n;
    }
-
+   /**
+    * close the window
+    */
    public void end()
    {
       myFrame.setVisible(false);
       myFrame.dispose();
    }
-
+   /**
+    * if a letter has been guessed already or if the letter is a known letter
+    * @param guess
+    * @return
+    */
    public boolean guessedAlready(String guess)
    {
        
@@ -244,7 +292,10 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
        }
        return true;
    }
-
+   /**
+    * draws the actual guy
+    * @param g2
+    */
    public void drawMan(Graphics2D g2)
    {
        if (livesV == 0)
@@ -288,7 +339,10 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
 
        }
    }
-   
+   /**
+    * get the number of lives from the model
+    * @param n
+    */
    public void setLivesV(int n)
    {
        livesV = n;

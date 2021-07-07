@@ -1,5 +1,10 @@
+/**
+hangmanModel
+has the Model code for the hangmanModel
+Tully Eva
+07/06/2021
+*/
 import java.util.Random;
-
 public class hangmanModel
 {
     private String[] possibleWords = new String[]{"cupcake", "flower", "sleepy", "tiger", "candy", "corn", "code", "pine", "cone", "pirate", "cookies", "trees", "tulips"};
@@ -55,19 +60,31 @@ public class hangmanModel
             }
         }
     }
-
+    /**
+     * @return String knownLetters
+     */
     public String getKnownWord()
     {
         return knownLetters;
     }
+    /**
+     * @return the mystery word
+     */
     public String getWord()
     {
         return this.theWord;
     }
+    /**
+     * @return the number of lives left
+     */
     public int getLives()
     {
         return this.lives;
     }
+    /**
+     * returns true if the known letters is equal to the word
+     * @return true/false
+     */
     public boolean isWin()
     {
         return knownLetters.equals(theWord);

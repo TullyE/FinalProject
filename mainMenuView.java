@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.geom.*;
 import javax.swing.JFrame;
 import java.awt.event.*;
-
 public class mainMenuView extends JPanel implements MouseListener
 {
     //Private Variables
