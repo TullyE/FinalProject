@@ -1,5 +1,7 @@
 package hangman;
-
+import java.io.IOException;
+import java.net.URL;
+import javax.sound.sampled.*;
 /**
 hangmanController
 has the controller code for the hangman
@@ -22,8 +24,24 @@ public class hangmanController
    }
    /**
     * hangman game logic
+    * @throws IOException
+    * @throws UnsupportedAudioFileException
+    * @throws LineUnavailableException
     */
-   public void logic()
+   
+    public void playSoundClick() throws UnsupportedAudioFileException, IOException, LineUnavailableException
+    {
+      URL file = new URL("file:///" + System.getProperty("user.dir") + "/audio" + "/Mouse%20click%20sound%20effect%20free%20copyright.wav");
+      System.out.println("file:///" + System.getProperty("user.dir") + "/audio" + "/Mouse%20click%20sound%20effect%20free%20copyright.wav");
+      AudioInputStream ais = AudioSystem.getAudioInputStream(file);
+      Clip clip = AudioSystem.getClip();
+      clip.open(ais);
+      clip.setFramePosition(0);
+      clip.start();
+    }
+
+   
+   public void logic() throws UnsupportedAudioFileException, IOException, LineUnavailableException
    {
       theModel.setWord("./hangman/words.txt");
       theView.initializeHashMap(theModel.getWord());
@@ -61,11 +79,13 @@ public class hangmanController
          {
             break;
          }
+         playSoundClick();
       }
       theView.setLivesV(theModel.getLives());
       if ((theModel.getLives() == 0))
       {
          theView.setLoss(true);
+         playSoundClick();
          try 
          {
             Thread.sleep(3000);
@@ -78,6 +98,10 @@ public class hangmanController
       if (theModel.isWin())
       {
          theView.setWin(true);
+         theView.invalidate();
+         theView.validate();
+         theView.repaint();
+         playSoundClick();
          try 
          {
             Thread.sleep(3000);

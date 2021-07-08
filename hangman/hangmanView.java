@@ -12,6 +12,9 @@ import java.awt.geom.*;
 import javax.swing.JFrame;
 import java.awt.event.*; 
 import java.util.HashMap;
+import java.net.URL;
+import javax.sound.sampled.*;
+import java.io.IOException;
 public class hangmanView extends JPanel implements KeyListener, MouseListener
 {
    private JFrame myFrame;
@@ -60,6 +63,18 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
       if (keys.containsKey(key))
       {
          userGuess = keys.get(key);
+         try {
+            playSoundKeyboard();
+         } catch (UnsupportedAudioFileException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+         } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+         } catch (LineUnavailableException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+         }
       }
       // *****************************************************
    }
@@ -348,5 +363,16 @@ public class hangmanView extends JPanel implements KeyListener, MouseListener
    public void setLivesV(int n)
    {
       livesV = n;
+   }
+
+   public void playSoundKeyboard() throws UnsupportedAudioFileException, IOException, LineUnavailableException
+   {
+     URL file = new URL("file:///" + System.getProperty("user.dir") + "/audio" + "/keybaord%20click%20sound%20effect%20free%20copyright.wav");
+     System.out.println("file:///" + System.getProperty("user.dir") + "/audio" + "/keybaord%20click%20sound%20effect%20free%20copyright.wav");
+     AudioInputStream ais = AudioSystem.getAudioInputStream(file);
+     Clip clip = AudioSystem.getClip();
+     clip.open(ais);
+     clip.setFramePosition(0);
+     clip.start();
    }
 }
