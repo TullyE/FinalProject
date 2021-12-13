@@ -1,5 +1,7 @@
 package mainMenu;
-
+import java.io.IOException;
+import java.net.URL;
+import javax.sound.sampled.*;
 /**
 mainMenuController
 Controller for the Main Menu
@@ -23,8 +25,11 @@ public class mainMenuController
   /**
    * return a string of the game name
    * @return
+ * @throws LineUnavailableException
+ * @throws IOException
+ * @throws UnsupportedAudioFileException
    */
-   public String whatGame()
+   public String whatGame() throws LineUnavailableException, IOException, UnsupportedAudioFileException
    {
       boolean waiting = true;
       String game = theView.whatGame();
@@ -47,10 +52,24 @@ public class mainMenuController
       }
       if (game.equals("ticTacToe"))
       {
+         URL file = new URL("file:///" + System.getProperty("user.dir") + "/audio" + "/Mouse%20click%20sound%20effect%20free%20copyright.wav");
+         System.out.println("file:///" + System.getProperty("user.dir") + "/audio" + "/Mouse%20click%20sound%20effect%20free%20copyright.wav");
+         AudioInputStream ais = AudioSystem.getAudioInputStream(file);
+         Clip clip = AudioSystem.getClip();
+         clip.open(ais);
+         clip.setFramePosition(0);
+         clip.start();
          return "ticTacToe";
       }
       if (game.equals("otherGame"))
       {
+         URL file = new URL("file:///" + System.getProperty("user.dir") + "/audio" + "/Mouse%20click%20sound%20effect%20free%20copyright.wav");
+         System.out.println("file:///" + System.getProperty("user.dir") + "/audio" + "/Mouse%20click%20sound%20effect%20free%20copyright.wav");
+         AudioInputStream ais = AudioSystem.getAudioInputStream(file);
+         Clip clip = AudioSystem.getClip();
+         clip.open(ais);
+         clip.setFramePosition(0);
+         clip.start();
          return "otherGame";
       }
       System.out.println("won't return this hopefully");

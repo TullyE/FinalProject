@@ -1,4 +1,7 @@
 package tictactoe;
+import java.io.IOException;
+import java.net.URL;
+import javax.sound.sampled.*;
 
 /**
 ticTacToeController
@@ -25,8 +28,21 @@ public class ticTacToeController
    }
   /**
    * Actual Tic Tac Toe Logic 
+ * @throws IOException
+ * @throws UnsupportedAudioFileException
+ * @throws LineUnavailableException
    */
-   public void logic()
+  public void winnerSound() throws UnsupportedAudioFileException, IOException, LineUnavailableException
+  {
+   URL file = new URL("file:///" + System.getProperty("user.dir") + "/audio" + "/ticTacToeWinner!.wav");
+   System.out.println("file:///" + System.getProperty("user.dir") + "/audio" + "/ticTacToeWinner!.wav");
+   AudioInputStream ais = AudioSystem.getAudioInputStream(file);
+   Clip clip = AudioSystem.getClip();
+   clip.open(ais);
+   clip.setFramePosition(0);
+   clip.start();
+  }
+   public void logic() throws UnsupportedAudioFileException, IOException, LineUnavailableException
    {
       boolean playing = true;
    
@@ -43,6 +59,13 @@ public class ticTacToeController
          }
          _theModel.addMarkModel(position, _theView.getTurn());
          _theView.addMarkView(position, _theView.getTurn());
+         URL file = new URL("file:///" + System.getProperty("user.dir") + "/audio" + "/Ding%20-%20Sound%20Effect%20(HD).wav");
+         System.out.println("file:///" + System.getProperty("user.dir") + "/audio" + "/Ding%20-%20Sound%20Effect%20(HD).wav");
+         AudioInputStream ais = AudioSystem.getAudioInputStream(file);
+         Clip clip = AudioSystem.getClip();
+         clip.open(ais);
+         clip.setFramePosition(0);
+         clip.start();
          _theView.invalidate();
          _theView.validate();
          _theView.repaint();
@@ -52,11 +75,13 @@ public class ticTacToeController
             if (_theView.getTurn()%2 == 0)
             {
                _theView.setXWin(true);
+               winnerSound();
                break;
             }
             else
             {
                _theView.setOWin(true);
+               winnerSound();
                break;
             }
          }
